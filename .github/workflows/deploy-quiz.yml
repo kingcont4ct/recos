@@ -27,10 +27,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-gh repo clone kingcont4ct/recos
-cd recos
-mkdir -p .github/workflows
-# paste the YAML into .github/workflows/deploy-quiz.yml
-git add .github/workflows/deploy-quiz.yml
-git commit -m "Add GitHub Pages auto-deploy workflow"
-git push origin main
