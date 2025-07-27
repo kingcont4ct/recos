@@ -1,3 +1,4 @@
+# .github/workflows/deploy-quiz.yml
 name: Deploy Red Zone Quiz
 
 on:
@@ -14,23 +15,13 @@ jobs:
 
       - name: 📂 Copy quiz into docs/
         run: |
-          # remove existing docs directory and recreate it
           rm -rf docs
           mkdir -p docs
-          # copy all quiz app files into docs/
           cp -r red_zone_quiz_app/* docs/
-          # prevent Jekyll from ignoring the folder
           touch docs/.nojekyll
 
       - name: 🚀 Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-gh repo clone kingcont4ct/recos
-cd recos
-mkdir -p .github/workflows
-# paste the YAML into .github/workflows/deploy-quiz.yml
-git add .github/workflows/deploy-quiz.yml
-git commit -m "Add GitHub Pages auto-deploy workflow"
-git push origin main
