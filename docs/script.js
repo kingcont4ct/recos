@@ -271,6 +271,17 @@ function showResults() {
     dom.resultsPoints.textContent = state.userPoints;
     saveState();
     showScreen(dom.resultsScreen);
+            // Determine rank for results page
+                            let currentRank = RANKS[0].label;
+        for (let i = RANKS.length - 1; i >= 0; i--) {
+                        if (state.userPoints >= RANKS[i].threshold) {
+            currentRank = RANKS[i].label;
+            break;
+        }
+    }
+    const rankEl = document.getElementById('results-rank');
+    if (rankEl) rankEl.textContent = currentRank;
+
 }
 
 // ---------------------------------------------------------------
