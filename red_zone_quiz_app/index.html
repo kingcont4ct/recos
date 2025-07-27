@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Red Zone | Red eYe Clique (REC)</title>
+    <!--
+      This page implements a simple quiz for the Red eYe Clique brand.  The
+      layout is intentionally minimalistic and dark to match REC's branding
+      guidelines while remaining fully functional without any build tools or
+      external dependencies.  All styling lives in the accompanying
+      `style.css` file and the game logic can be found in `script.js`.
+    -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+    <!-- Gamification header: shows the player's name, points, rank and streak -->
+    <div id="gamification-header" class="hidden gamification-header">
+        <div class="gamification-info">
+            <div id="user-name-display" class="user-name-display"></div>
+            <div id="rzp-points-display" class="points-display" aria-live="polite">0 RZP</div>
+            <div id="user-rank-display" class="rank-display" aria-live="polite">Rank: New Blood</div>
+            <div id="streak-display" class="streak-display"></div>
+        </div>
+        <button id="mute-btn" class="mute-btn" title="Mute/Unmute sounds">🔊</button>
+    </div>
+
+    <!-- Achievement toast container.  Badges are injected here by script.js -->
+    <div id="badge-container" class="badge-container"></div>
+
+    <main id="app-container" class="app-container">
+        <header class="page-header">
+            <h1 class="title">Find Your <span class="highlight">Red Zone</span></h1>
+            <p class="subtitle">A quiz by the Red eYe Clique</p>
+        </header>
+
+        <!-- Welcome Screen: prompt the user for their name -->
+        <section id="welcome-screen" class="card">
+            <h2 class="card-title">Welcome, Visionary</h2>
+            <p class="card-text">Enter your name to begin the journey and start earning RZP.</p>
+            <form id="name-form" class="name-form">
+                <input type="text" id="name-input" placeholder="Enter your name" required class="name-input">
+                <button type="submit" class="btn-primary">Start Quiz</button>
+            </form>
+        </section>
+
+        <!-- Quiz Screen: dynamically displays questions and answers -->
+        <section id="quiz-screen" class="card hidden">
+            <p id="question-text" class="question-text"></p>
+            <div id="answers-container" class="answers-container"></div>
+            <p class="progress-text">Question <span id="current-question-number"></span> of <span id="total-question-number"></span></p>
+        </section>
+
+        <!-- Results Screen: displays the final score -->
+        <section id="results-screen" class="card hidden">
+            <h2 class="card-title">Quiz Complete!</h2>
+            <p class="results-text">Well done, <span id="results-name" class="results-name"></span>!</p>
+            <p class="results-text">You've earned a total of <span id="results-points" class="results-points"></span> RZP.</p>
+            <p class="results-text">Your Red Zone profile is ready.</p>
+            <button id="restart-btn" class="btn-primary">Take Quiz Again</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
